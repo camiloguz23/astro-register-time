@@ -1,0 +1,32 @@
+---
+import Layout from "@layout/layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout Title="Time Register">
+  <main>
+    <h1>Time Register</h1>
+    <Image
+      src="/img/home.png"
+      alt="Hombre mira una patalla viendo registro bien hechos"
+      width="400"
+      height="400"
+      loading="eager"
+    />
+  </main>
+
+  <style>
+    main {
+      display: grid;
+      grid:
+        "title" 100px
+        "img" auto
+        "btn" 200px
+        /1fr;
+      justify-items: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</Layout>
