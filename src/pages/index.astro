@@ -1,6 +1,7 @@
 ---
 import Layout from "@layout/layout.astro";
 import { Image } from "astro:assets";
+import { ButtonLogin } from "@React/";
 ---
 
 <Layout Title="Time Register">
@@ -13,6 +14,9 @@ import { Image } from "astro:assets";
       height="400"
       loading="eager"
     />
+    <section class="container-btn">
+      <ButtonLogin client:visible />
+    </section>
   </main>
 
   <style>
@@ -27,6 +31,13 @@ import { Image } from "astro:assets";
       align-items: center;
       height: 100%;
       width: 100%;
+
+      .container-btn {
+        grid-area: btn;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
     }
   </style>
 </Layout>
