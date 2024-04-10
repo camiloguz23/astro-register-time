@@ -1,14 +1,14 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "baseUrl": "C:/Users/Jeyson/Desktop/astro/register-time",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@layout/*": ["src/layout/*"],
-      "@React/": ["src/components/react/index.ts"],
-      "@shared/*": ["src/shared/*"],
-      "@db/*": ["src/database/*"]
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@layout/*": ["./src/layout/*"],
+      "@React/": ["./src/components/react/index.ts"],
+      "@shared/*": ["./src/shared/*"],
+      "@db/*": ["./src/database/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
