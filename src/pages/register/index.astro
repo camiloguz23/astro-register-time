@@ -1,9 +1,9 @@
 ---
 import SectionInfo from "@components/section-info.astro";
 import Layout from "@layout/layout.astro";
-import type { TimeRegister } from "@shared/types";
-import {} from '@'
-
+import { MONTH } from "@shared/constantes";
+import { formatHoursMinutes } from "@shared/helpers";
+import type { CodeMonthType, TimeRegister } from "@shared/types";
 const data = Astro.cookies.get("user")?.value ?? "";
 let stats = "";
 
@@ -15,7 +15,8 @@ const dataResponse = await fetch(
 );
 const user: TimeRegister = await dataResponse.json();
 stats = "done";
-MO
+const month: CodeMonthType = new Date().getMonth() as CodeMonthType;
+  const year = new Date().getFullYear();
 ---
 
 <Layout Title="time">
