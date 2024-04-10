@@ -23,6 +23,13 @@ export const UiFormLogin = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     spinner.onTrue();
+    fetch("http://localhost:4321/api/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }).then(() => {
+      spinner.onFalse();
+      window.location.reload();
+    });
     // const isSession = await onLogin(data);
 
     // isSession === false &&

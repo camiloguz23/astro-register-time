@@ -2,11 +2,17 @@
 import Layout from "@layout/layout.astro";
 import { Image } from "astro:assets";
 import { ButtonLogin } from "@React/";
+
+const data = Astro.cookies.get("user")?.value ?? "";
+
+if (data) {
+  return Astro.redirect("/register");
+}
 ---
 
 <Layout Title="Time Register">
   <main>
-    <h1>Time Register</h1>
+    <h1>Time Register {data}</h1>
     <Image
       src="/img/home.png"
       alt="Hombre mira una patalla viendo registro bien hechos"
@@ -16,6 +22,7 @@ import { ButtonLogin } from "@React/";
     />
     <section class="container-btn">
       <ButtonLogin client:visible />
+      <a href="/register"> ir</a>
     </section>
   </main>
 

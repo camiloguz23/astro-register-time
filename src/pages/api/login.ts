@@ -1,13 +1,13 @@
 import { mongodbConnect, timeModel } from "@db/index";
 import type { TimeRegister } from "@shared/types";
-import type { APIRoute } from "astro";
+import type { APIContext, APIRoute } from "astro";
 
-export const GET: APIRoute = async ({ params }) => {
-  const email = params.email;
+export const POST: APIRoute = async ({ request, cookies,redirect }: APIContext) => {
+  const email: { email: string } = await request.json();
   try {
     await mongodbConnect();
-
-    const timeDate: TimeRegister | null = await timeModel.findOne({ email });
+    const timeDate: TimeRegister | null = await timeModel.findOne(email);
+    cookies.set("user", timeDate.email, { path: "/" });
     return new Response(JSON.stringify(timeDate), {
       status: 200,
     });

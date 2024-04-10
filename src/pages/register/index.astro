@@ -1,0 +1,14 @@
+---
+import Layout from "@layout/layout.astro";
+
+const data = Astro.cookies.get("user")?.value ?? "";
+
+// if (!data) {
+//   return Astro.redirect("/");
+// }
+---
+
+<Layout Title="time">
+  <h1>register {data}</h1>
+  <a href="/">home</a>
+</Layout>
