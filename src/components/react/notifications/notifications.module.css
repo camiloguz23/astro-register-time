@@ -1,0 +1,32 @@
+.notifications {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  .icon {
+    color: white;
+    animation: IconAnimation linear 2s infinite;
+  }
+}
+
+@keyframes IconAnimation {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(1.5);
+  }
+  60% {
+    transform: scale(1.5);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

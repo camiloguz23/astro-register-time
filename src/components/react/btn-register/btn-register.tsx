@@ -6,6 +6,8 @@ import { Spinner } from "../spinner/spinner";
 import { differenceInMinutes } from "date-fns";
 import { editMonth, editYear } from "@shared/helpers";
 import type { CodeMonthType } from "@shared/types";
+import { Toaster, toast } from "sonner";
+import { UiNotifications } from "../notifications/notifications";
 
 interface PropsBtnRegister {
   id: string;
@@ -47,10 +49,23 @@ export const BtnRegister = ({
     //   console.log("🚀 ~ onRegisterTime ~ result + yearTime:", result + yearTime)
     spinner.onFalse();
     storage.setStorage("time", "");
-    isSaved.status === 200 ? window.location.reload() : alert("error");
+    isSaved.status === 200
+      ? window.location.reload()
+      : toast.error(
+          <UiNotifications
+            message={
+              result >= 1
+                ? "No se registro el tiempo"
+                : "tiempo es inferior al minuto no se registra"
+            }
+            type="error"
+          />,
+          { style: { backgroundColor: "hsla(0,50%,50%,1)" } }
+        );
   };
   return (
     <>
+      <Toaster position="top-right" />
       <button onClick={onRegisterTime} className={style.button}>
         <Icons.time type={storage.value ? "close" : "add"} />
         {storage.value ? "detener tiempo" : "iniciar tiempo"}
