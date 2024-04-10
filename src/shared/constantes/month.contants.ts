@@ -1,4 +1,5 @@
-import { CodeMonthType, MonthType } from "../types";
+import type { CodeMonthType, MonthType } from "..";
+
 
 
 export const MONTH: Record<CodeMonthType, MonthType> = {

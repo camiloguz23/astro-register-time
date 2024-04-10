@@ -1,4 +1,5 @@
-import { FormatHoursMinutesInterfaces } from "../types";
+import type { FormatHoursMinutesInterfaces } from "..";
+
 
 
 export const formatHoursMinutes = (minutesDb: number): FormatHoursMinutesInterfaces => {

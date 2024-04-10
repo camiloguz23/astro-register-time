@@ -1,14 +1,38 @@
 ---
+import SectionInfo from "@components/section-info.astro";
 import Layout from "@layout/layout.astro";
+import type { TimeRegister } from "@shared/types";
+import {} from '@'
 
 const data = Astro.cookies.get("user")?.value ?? "";
+let stats = "";
 
-// if (!data) {
-//   return Astro.redirect("/");
-// }
+if (!data) {
+  return Astro.redirect("/");
+}
+const dataResponse = await fetch(
+  "http://localhost:4321/api/register?email=jeysonkmk"
+);
+const user: TimeRegister = await dataResponse.json();
+stats = "done";
+MO
 ---
 
 <Layout Title="time">
-  <h1>register {data}</h1>
-  <a href="/">home</a>
+  <main>
+    <h1>register Time</h1>
+    {stats !== "done" && <p>Loading</p>}
+    <SectionInfo month={MONTH[month]} time={formatHoursMinutes(user?.tiempo.meses[MONTH[month]] ?? 0)}/>
+  </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    height: 100%;
+  }
+</style>

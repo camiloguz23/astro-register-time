@@ -8,18 +8,24 @@ import type {
 import { type APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ params, request, redirect }) => {
+  const url = new URL(request.url);
+  const searchParams = new URLSearchParams(url.search);
+  const email = searchParams.get('email')
   try {
     await mongodbConnect();
 
     const timeDate: TimeRegister | null = await timeModel.findOne({
-      email: "jeysonkmguzman@gmail.com",
+      email,
     });
-    return redirect("/register");
+    return new Response(JSON.stringify(timeDate), {
+      status: 200,
+    });
   } catch (error) {
     return new Response(JSON.stringify({ error: "Error" }), {
       status: 404,
     });
   }
+
 };
 
 // export const POST: APIRoute = async ({ request }) => {

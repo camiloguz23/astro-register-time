@@ -1,0 +1,34 @@
+---
+import type { FormatHoursMinutesInterfaces } from "@shared/types";
+
+interface Props {
+  month: string;
+  time: FormatHoursMinutesInterfaces;
+}
+
+const { month, time } = Astro.props;
+---
+
+<section class="info-predicaion">
+  <h2 class="prettyText">Este mes {month}</h2>
+  <p class="prettyText details-info">
+    Horas hechas {time.hours} con {time.minutes} minutos
+  </p>
+</section>
+
+<style>
+  .info-predicaion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .prettyText {
+      text-wrap: pretty;
+    }
+
+    .details-info {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+</style>
