@@ -1,4 +1,5 @@
 ---
+import BarProgress from "@components/bar-progress.astro";
 import SectionInfo from "@components/section-info.astro";
 import Layout from "@layout/layout.astro";
 import { MONTH } from "@shared/constantes";
@@ -16,14 +17,42 @@ const dataResponse = await fetch(
 const user: TimeRegister = await dataResponse.json();
 stats = "done";
 const month: CodeMonthType = new Date().getMonth() as CodeMonthType;
-  const year = new Date().getFullYear();
+const year = new Date().getFullYear();
 ---
 
 <Layout Title="time">
   <main>
     <h1>register Time</h1>
-    {stats !== "done" && <p>Loading</p>}
-    <SectionInfo month={MONTH[month]} time={formatHoursMinutes(user?.tiempo.meses[MONTH[month]] ?? 0)}/>
+    <div class="container">
+      <SectionInfo
+        month={MONTH[month]}
+        time={formatHoursMinutes(user?.tiempo.meses[MONTH[month]] ?? 0)}
+      />
+      <section class="section-precursorado">
+        <h3>Precursorados</h3>
+        <BarProgress
+          max={15}
+          value={formatHoursMinutes(user?.tiempo.meses[MONTH[month]] ?? 0)
+            .hours}
+          title="Precusorado Auxiliar (Campaña)"
+          color="naranja"
+        />
+        <BarProgress
+          max={30}
+          value={formatHoursMinutes(user?.tiempo.meses[MONTH[month]] ?? 0)
+            .hours}
+          title="Precusorado Auxiliar"
+          color="azul"
+        />
+        <BarProgress
+          max={50}
+          value={formatHoursMinutes(user?.tiempo.meses[MONTH[month]] ?? 0)
+            .hours}
+          title="Precursorado Regular"
+          color="verde"
+        />
+      </section>
+    </div>
   </main>
 </Layout>
 
@@ -35,5 +64,16 @@ const month: CodeMonthType = new Date().getMonth() as CodeMonthType;
     gap: 20px;
     padding: 10px;
     height: 100%;
+  }
+
+  .container {
+    width: max(30%, 350px);
+
+    .section-precursorado {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
   }
 </style>

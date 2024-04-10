@@ -1,0 +1,34 @@
+---
+interface Props {
+  max: number;
+  value: number;
+  title: string;
+  color: "verde" | "azul" | "naranja";
+}
+const { color, max, title, value } = Astro.props;
+---
+
+<div class="content">
+  <progress class={`progress-${color}`} max={max} value={value}></progress>
+  <span>{title}</span>
+</div>
+
+<style>
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .progress-verde {
+    accent-color: hsla(150, 50%, 50%, 0.8);
+  }
+
+  .progress-azul {
+    accent-color: hsla(180, 50%, 50%, 0.8);
+  }
+
+  .progress-naranja {
+    accent-color: hsla(40, 50%, 50%, 0.8);
+  }
+</style>
