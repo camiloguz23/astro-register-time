@@ -10,10 +10,9 @@ import { type APIRoute } from "astro";
 export const GET: APIRoute = async ({ params, request, redirect }) => {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.search);
-  const email = searchParams.get('email')
+  const email = searchParams.get("email");
   try {
     await mongodbConnect();
-
     const timeDate: TimeRegister | null = await timeModel.findOne({
       email,
     });
@@ -25,7 +24,6 @@ export const GET: APIRoute = async ({ params, request, redirect }) => {
       status: 404,
     });
   }
-
 };
 
 // export const POST: APIRoute = async ({ request }) => {
@@ -53,12 +51,14 @@ export const PUT: APIRoute = async ({ request, redirect }) => {
     await mongodbConnect();
     const isUpdate = await setMonth({ _id, month });
     const isUpdateYear = await setYear({ _id, year });
-    return isUpdate && isUpdateYear
-      ? new Response(JSON.stringify({ message: "error" }), {
-          status: isUpdate && isUpdateYear ? 200 : 404,
-          statusText: "error",
-        })
-      : redirect("register/", 300);
+    console.log("🚀 ~ constPUT:APIRoute= ~ isUpdateYear:", isUpdateYear);
+    return new Response(
+      JSON.stringify({ message: isUpdate && isUpdateYear ? "ok" : "error" }),
+      {
+        status: isUpdate && isUpdateYear ? 200 : 404,
+        statusText: "error",
+      }
+    );
   } catch (error) {
     return new Response(JSON.stringify({ message: error }), {
       status: 404,

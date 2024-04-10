@@ -16,6 +16,7 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "astro": "^4.5.16",
+    "date-fns": "^3.6.0",
     "mongoose": "^8.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

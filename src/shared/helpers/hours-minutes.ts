@@ -1,6 +1,4 @@
-import type { FormatHoursMinutesInterfaces } from "..";
-
-
+import type { FormatHoursMinutesInterfaces } from "@shared/types";
 
 export const formatHoursMinutes = (minutesDb: number): FormatHoursMinutesInterfaces => {
   const hours = Math.floor(minutesDb / 60) 

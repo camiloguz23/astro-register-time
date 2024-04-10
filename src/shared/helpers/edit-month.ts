@@ -1,4 +1,5 @@
-import { CodeMonthType } from '../types';
+import type { CodeMonthType } from "@shared/types";
+
 
 export const editMonth = (minutes: number): Record<CodeMonthType, Record<string, number>> => ({
   '0': { 'tiempo.meses.enero': minutes },
