@@ -7,7 +7,7 @@ import type {
 } from "@shared/types";
 import { type APIRoute } from "astro";
 
-export const GET: APIRoute = async ({ params, request, redirect }) => {
+export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.search);
   const email = searchParams.get("email");
@@ -45,7 +45,7 @@ const setYear = async ({ _id, year }: UpdateYearModel) => {
   return updateYear;
 };
 
-export const PUT: APIRoute = async ({ request, redirect }) => {
+export const PUT: APIRoute = async ({ request }) => {
   const { _id, month, year }: UpdateActionModel = await request.json();
   try {
     await mongodbConnect();

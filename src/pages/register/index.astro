@@ -2,7 +2,7 @@
 import BarProgress from "@components/bar-progress.astro";
 import SectionInfo from "@components/section-info.astro";
 import Layout from "@layout/layout.astro";
-import { endpoint, MONTH } from "@shared/constantes";
+import { MONTH } from "@shared/constantes";
 import { formatHoursMinutes } from "@shared/helpers";
 import type { CodeMonthType, TimeRegister } from "@shared/types";
 import { BtnRegister } from "@React/";
@@ -20,6 +20,7 @@ const user: TimeRegister = await dataResponse.json();
 stats = "done";
 const month: CodeMonthType = new Date().getMonth() as CodeMonthType;
 const year = new Date().getFullYear();
+stats
 ---
 
 <Layout Title="time">
