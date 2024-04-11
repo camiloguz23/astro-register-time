@@ -7,6 +7,7 @@ import style from "./ui-form.module.css";
 import { type LoginModel } from "@shared/types";
 import { Spinner } from "../spinner/spinner";
 import { useBoolean } from "@shared/hooks";
+import { endpoint } from "@shared/constantes";
 
 export const UiFormLogin = () => {
   const spinner = useBoolean();
@@ -23,7 +24,7 @@ export const UiFormLogin = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     spinner.onTrue();
-    fetch("http://localhost:4321/api/login", {
+    fetch(`https://register-time.pages.dev/api/login`, {
       method: "POST",
       body: JSON.stringify(data),
     }).then(() => {

@@ -38,7 +38,7 @@ export const BtnRegister = ({
     spinner.onTrue();
     const result = differenceInMinutes(new Date(), new Date(storage.value));
     const setMonth = editMonth(result + minutesDB)[month as CodeMonthType];
-    const isSaved = await fetch("http://localhost:4321/api/register", {
+    const isSaved = await fetch(`https://register-time.pages.dev/api/register`, {
       method: "PUT",
       body: JSON.stringify({
         _id: id,

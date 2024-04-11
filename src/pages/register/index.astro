@@ -2,7 +2,7 @@
 import BarProgress from "@components/bar-progress.astro";
 import SectionInfo from "@components/section-info.astro";
 import Layout from "@layout/layout.astro";
-import { MONTH } from "@shared/constantes";
+import { endpoint, MONTH } from "@shared/constantes";
 import { formatHoursMinutes } from "@shared/helpers";
 import type { CodeMonthType, TimeRegister } from "@shared/types";
 import { BtnRegister } from "@React/";
@@ -14,10 +14,9 @@ if (!data) {
   return Astro.redirect("/");
 }
 const dataResponse = await fetch(
-  `http://localhost:4321/api/register?email=${data}`
+  `https://register-time.pages.dev/api/register?email=${data}`
 );
 const user: TimeRegister = await dataResponse.json();
-console.log("🚀 ~ user:", user)
 stats = "done";
 const month: CodeMonthType = new Date().getMonth() as CodeMonthType;
 const year = new Date().getFullYear();
